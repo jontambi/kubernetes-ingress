@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: "nginx-ingress"
   annotations:
     "helm.sh/hook": crd-install
+    "helm.sh/hook-delete-policy": "before-hook-creation"
 spec:
   group: k8s.nginx.org
   versions:
