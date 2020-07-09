@@ -21,4 +21,5 @@ jobs:
     inputs:
       script: |
         cd kubernetes-ingress
+        git checkout v1.7.2
         make PREFIX=gcr.io/grandesuperficies-dev/nginx-ingress
