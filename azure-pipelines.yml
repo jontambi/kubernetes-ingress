@@ -9,8 +9,16 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: |
-    cd kubernetes-ingress
-    make PREFIX=gcr.io/grandesuperficies-dev/nginx-ingress
-  displayName: 'Build and push nginx-ingress to the registry'
+jobs:
+- job:
+  steps:
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'gcp-grandesuperficies-dev'
+      command: 'login'
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cd kubernetes-ingress
+        make PREFIX=gcr.io/grandesuperficies-dev/nginx-ingress
